@@ -4,7 +4,7 @@ import { DisplayMessage, GenericValidator, ValidationMessages } from 'src/app/ut
 
 import { Usuario } from '../models/usuario';
 import { ContaService } from '../services/conta.service';
-import { MustMatch } from '../../utils/confirm-password.validation';
+import { MustMatch } from '../../utils/mustMatch.validation';
 import { fromEvent, merge, Observable } from 'rxjs';
 
 @Component({
