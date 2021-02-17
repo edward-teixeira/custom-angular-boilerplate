@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../@shared/shared.module';
 // custom
+import { CustomFormsModule } from 'ngx-custom-validators'
+
 import { ContaRoutingModule } from './conta.route';
 import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
@@ -25,6 +27,7 @@ import { ContaService } from './services/conta.service';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    CustomFormsModule,
   ],
   providers: [
     ContaService
