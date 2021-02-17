@@ -24,6 +24,7 @@
     "import-spacing": true,
     "indent": {
       "options": [
+        "always",
         "spaces"
       ]
     },

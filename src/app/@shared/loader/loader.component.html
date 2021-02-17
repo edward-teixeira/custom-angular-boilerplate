@@ -1,0 +1,8 @@
+<div [hidden]="!isLoading" class="loader-container">
+  <app-fulfilling-bouncing-circle-spinner
+  [animationDuration]="animationDuration"
+  [size]="loaderSize"
+  [color]="color"
+  ></app-fulfilling-bouncing-circle-spinner>
+  <div class="loader-message" [ngStyle]="{'color': color}">{{ message }}</div>
+</div>
