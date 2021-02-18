@@ -1,3 +1,4 @@
 <app-menu></app-menu>
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+<!-- Lógica simples para esconder componentes globais dependendo da rota -->
+<app-footer *ngIf="shouldHide()"></app-footer>
