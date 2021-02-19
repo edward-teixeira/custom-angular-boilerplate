@@ -8,6 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Epic Spinners;
 - ngx-bootstrap;
 - ngx-custom-validators
+- ngx-toastr
 
 ## Development server
 

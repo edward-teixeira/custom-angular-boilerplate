@@ -7,13 +7,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../@shared/shared.module';
+import { MenuLoginComponent } from './menu-login/menu-login.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     MenuComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    MenuLoginComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { SharedModule } from '../@shared/shared.module';
     HomeComponent,
     MenuComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    MenuLoginComponent
   ],
   providers: [],
 })

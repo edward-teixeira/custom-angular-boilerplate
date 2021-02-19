@@ -1,11 +1,15 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { DisplayMessage, GenericValidator, ValidationMessages } from 'src/app/utils/generic-form.validation';
+import { fromEvent, merge, Observable } from 'rxjs';
+
+
+import { ToastrService } from 'ngx-toastr';
+
 
 import { Usuario } from '../models/usuario';
 import { ContaService } from '../services/conta.service';
 import { MustMatch } from '../../utils/mustMatch.validation';
-import { fromEvent, merge, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -30,7 +34,8 @@ export class CadastroComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private contaService: ContaService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -75,16 +80,9 @@ export class CadastroComponent implements OnInit, AfterViewInit, OnDestroy {
         .registrar(this.usuario)
         .subscribe(
           success => this.onSuccess(success),
-          err => this.onError(err)
+          error => this.onError(error)
         );
     }
-  }
-  // escolha um tratamento de erro baseado na sua api
-  private onError(err: any): void {
-    // caso a resposta da api contenha um objeto { errors: [errors]}
-    // this.errors = err.error.errors;
-    // tratamento generico
-    this.errors = err.message;
   }
 
   private onSuccess(response: any): void {
@@ -92,10 +90,30 @@ export class CadastroComponent implements OnInit, AfterViewInit, OnDestroy {
     this.errors = [];
 
     this.contaService.LocalStorage.salvarDadosLocaisUsuario(response);
-    this.router.navigate(['/home']);
+
+    const toast = this.toastr.success('Registro realizado com Sucesso!', 'Bem vindo!!!', {
+      progressBar: true,
+      positionClass: 'toast-top-center',
+    });
+
+    if (toast){
+      toast.onHidden.subscribe(() => {
+        this.router.navigate(['/home']);
+      });
+    }
   }
 
-  private isFormValid(form: FormGroup): boolean {
+  // escolha um tratamento de erro baseado na sua api
+  private onError(err: any): void {
+    // caso a resposta da api contenha um objeto { errors: [errors]}
+    this.errors = err.error.errors;
+
+    this.toastr.error('Ocorreu um erro!', 'Opa :(', {
+      positionClass: 'toast-top-center',
+    });
+  }
+
+  isFormValid(form: FormGroup): boolean {
     return (form.dirty && form.valid);
   }
 
