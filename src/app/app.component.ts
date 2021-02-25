@@ -18,9 +18,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void { }
 
   shouldHide(): boolean {
-    const show: boolean  = this.currentRoute !== '/conta/cadastro' && this.currentRoute !== '/conta/login';
-    return show;
-
+    return this.currentRoute !== '/conta/cadastro' && this.currentRoute !== '/conta/login';
   }
 
 }

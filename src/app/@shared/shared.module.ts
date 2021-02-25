@@ -20,6 +20,8 @@ import { FulfillingBouncingCircleSpinnerModule } from 'angular-epic-spinners';
   exports: [
     LoaderComponent,
   ],
-  providers: [],
+  providers: [
+
+  ],
 })
 export class SharedModule {}
